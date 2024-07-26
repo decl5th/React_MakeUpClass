@@ -8,12 +8,15 @@ const Counter2 = () => {
 
     const {number, name } = data;
 
-    const decrese = () => {
-        setData({...data, number: number - 1});
+    
+
+    const decrease = () => {
+        //setData({...data, number: number - 1}); // 불변성 유지
+        setData((prevState) => ({...prevState, number: number - 1 })); //⭐
     };
 
-    const increse = () => {
-        setData({...data, number: number + 1});
+    const increase = () => {
+        setData((prevState) => ({...prevState, number: number + 1 }));
     };
 
     console.log("호출", data);
@@ -22,8 +25,8 @@ const Counter2 = () => {
         <>
             <h1>{number}</h1>
             <h2>{name}</h2>
-            <button type="button" onClick={decrese}>-1</button>
-            <button type="button" onClick={increse}>+1</button>
+            <button type="button" onClick={decrease}>-1</button>
+            <button type="button" onClick={increase}>+1</button>
         </>
     );
 };
